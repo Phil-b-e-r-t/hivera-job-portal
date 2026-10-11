@@ -1,1 +1,517 @@
+/* =========================================================
+   Hirevera · Web styles
+   Ported from the Figma mobile screens to a responsive web view.
+   Design tokens come straight from the Figma file.
+   ========================================================= */
 
+:root {
+  --canvas: #fcfbf8;
+  --card: #ffffff;
+  --input: #f5f6f7;
+  --border: #eef0f2;
+  --text-primary: #101820;
+  --text-secondary: #4f5b66;
+  --text-muted: #8a95a3;
+  --brand: #ff7800;
+  --brand-tint: #fff0e3;
+  --brand-ink: #bf5700;
+
+  --radius-card: 28px;
+  --radius-field: 16px;
+  --radius-btn: 18px;
+
+  --shadow-card: 0 8px 32px rgba(16, 24, 32, 0.02);
+  --shadow-float: 0 4px 16px rgba(16, 24, 32, 0.04);
+  --shadow-btn: 0 4px 12px rgba(255, 120, 0, 0.08);
+
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 13px;
+  background: var(--canvas);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; border: 0; background: none; padding: 0; cursor: pointer; }
+input { font: inherit; color: inherit; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.ic { flex-shrink: 0; display: block; }
+.ic-12 { width: 12px; height: 12px; }
+.ic-13 { width: 13px; height: 13px; }
+.ic-14 { width: 14px; height: 14px; }
+.ic-18 { width: 18px; height: 18px; }
+.ic-20 { width: 20px; height: 20px; }
+.ic-22 { width: 22px; height: 22px; }
+
+/* ---------- Brand logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.logo__h { color: var(--brand); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn:hover { filter: brightness(1.05); }
+.btn:active { transform: scale(0.99); }
+.btn--lg { width: 100%; height: 58px; border-radius: var(--radius-btn); font-size: 16px; }
+.btn--auth { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; }
+.btn--sm { width: 112px; height: 32px; border-radius: 10px; font-size: 12px; white-space: nowrap; }
+
+/* ---------- Form fields ---------- */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 16px;
+  background: var(--input);
+  border: 1px solid #d8dee4;
+  border-radius: var(--radius-field);
+  color: var(--text-muted);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.field input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+.field input::placeholder { color: var(--text-muted); opacity: 1; }
+.field:focus-within { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255, 120, 0, 0.12); }
+.field__spacer { width: 20px; flex-shrink: 0; }
+.field__toggle { display: grid; place-items: center; color: var(--text-muted); }
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-error { color: #c62828; font-size: 12px; line-height: 1.4; }
+.field-group.is-invalid .field,
+.field-group.is-invalid .field:focus-within {
+  border-color: #c62828;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+  animation: required-nudge 0.32s ease;
+}
+@keyframes required-nudge {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-4px); }
+  70% { transform: translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field-group.is-invalid .field { animation: none; }
+}
+
+/* =========================================================
+   Auth pages (login + sign up)
+   ========================================================= */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 24px 56px;
+}
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(16, 24, 32, 0.08);
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 0 0 1px rgba(255, 120, 0, 0.2),
+    0 0 0 6px rgba(255, 120, 0, 0.06),
+    0 18px 56px rgba(16, 24, 32, 0.12);
+}
+
+/* Portrait sits behind the card. Drop the photo exported from Figma at
+   assets/portrait.jpg and it appears automatically; until then the warm
+   gradient below is shown. */
+.portrait {
+  position: absolute;
+  inset: 0;
+  background:
+    url('../assets/portrait.jpg') center / cover no-repeat,
+    linear-gradient(160deg, #ffe9d6 0%, #f6d9c4 55%, #efc9b0 100%);
+}
+.auth-card--signup .portrait { opacity: 0.65; }
+.portrait__backdrop {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  left: 22%;
+  top: 3%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 120, 0, 0.18), rgba(255, 120, 0, 0) 70%);
+}
+.float-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow-float);
+  font-size: 12px;
+  font-weight: 600;
+}
+.float-badge .ic { color: var(--brand); }
+
+.auth-card__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 14px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(16, 24, 32, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(16, 24, 32, 0.1);
+}
+@media (min-width: 600px) { .auth-card__body { padding: 32px; } }
+
+.welcome { display: flex; flex-direction: column; gap: 8px; }
+.welcome h1 { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; }
+.welcome p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+.auth-card--signup .welcome h1 { font-size: 31px; line-height: 1.16; letter-spacing: -1.1px; }
+
+.credentials { display: flex; flex-direction: column; gap: 16px; }
+
+.login-options { display: flex; align-items: center; justify-content: space-between; }
+.check { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.check input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border-radius: 6px;
+  background: var(--input);
+  border: 1.5px solid #dfe3e7;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.check input:checked {
+  background: rgba(138, 149, 163, 0.7);
+  border-color: transparent;
+}
+.check input:checked::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+.link-brand { color: var(--brand); font-weight: 500; font-size: 12px; }
+.link-brand--semibold { font-weight: 600; }
+
+.divider { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-muted); }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--input); }
+.social { display: flex; flex-direction: column; gap: 16px; }
+.providers { display: flex; gap: 16px; }
+.social-btn {
+  flex: 1;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1.5px solid var(--input);
+  border-radius: var(--radius-field);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.social-btn:hover { background: var(--input); }
+.social-btn svg { width: 20px; height: 20px; }
+
+.auth-foot { text-align: center; font-size: 12px; line-height: 1.5; color: var(--text-secondary); }
+.auth-foot a { color: var(--brand); font-weight: 600; }
+.auth-foot .gap { display: block; height: 18px; }
+
+/* =========================================================
+   Site header + navigation
+   (bottom tab bar on phones, top bar on desktop)
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header__inner {
+  max-width: 1120px;
+  height: 72px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav { display: flex; gap: 4px; }
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: background 0.15s ease;
+}
+.nav__item:hover { background: var(--input); }
+.nav__item.is-active { color: var(--brand); font-weight: 600; background: var(--brand-tint); }
+
+@media (max-width: 767px) {
+  .site-header { position: static; background: none; backdrop-filter: none; border: 0; }
+  .site-header__inner { height: 0; padding: 0; }
+  .site-header .logo { display: none; }
+  .nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    gap: 0;
+    padding: 12px 12px 22px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+  }
+  .nav__item {
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+    font-size: 10px;
+    background: none !important;
+  }
+}
+
+/* ---------- Page container ---------- */
+.page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; }
+@media (max-width: 767px) { .page { padding: 8px 24px 120px; } }
+
+/* =========================================================
+   Job listing
+   ========================================================= */
+.greeting { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.greeting h1 { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; white-space: pre-wrap; }
+.greeting p { margin-top: 6px; font-size: 13px; }
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #ffd9b8, #f5b389);
+  font-weight: 700;
+  font-size: 18px;
+  color: #7a3b00;
+}
+/* Add the avatar photo exported from Figma at assets/avatar.png */
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/avatar.png') center / cover no-repeat;
+}
+
+.search-row { display: flex; gap: 12px; margin-top: 16px; max-width: 720px; }
+.search-row .field { flex: 1; }
+.filter-btn {
+  width: 52px;
+  height: 53px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: var(--brand);
+  color: #fff;
+  border-radius: var(--radius-field);
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.chip.is-active { background: var(--brand-tint); color: var(--brand-ink); }
+
+.results-head { display: flex; align-items: center; justify-content: space-between; margin: 32px 0 16px; }
+.results-head h2 { font-size: 16px; font-weight: 600; }
+.results-head span { font-size: 12px; color: var(--text-muted); }
+
+.job-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+@media (max-width: 420px) { .job-grid { grid-template-columns: 1fr; } }
+.job-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--card);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.job-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(16, 24, 32, 0.06); }
+.job-card__identity { display: flex; align-items: center; gap: 12px; }
+.job-card__role { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.job-card__title { font-size: 16px; font-weight: 600; }
+.job-card__company { font-size: 13px; color: var(--text-secondary); }
+.job-card__row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.location { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-secondary); }
+.location .ic { color: var(--text-muted); }
+.tag { padding: 5px 8px; border-radius: 8px; background: var(--input); font-size: 12px; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+.salary { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.salary span { font-weight: 400; }
+.salary .muted { color: var(--text-muted); }
+.badges { display: flex; gap: 5px; }
+.badge { padding: 4px 7px; border-radius: 6px; background: var(--brand-tint); color: var(--brand-ink); font-size: 10px; font-weight: 600; white-space: nowrap; }
+.badge--md { display: inline-flex; align-items: center; height: 20px; font-size: 12px; font-weight: 500; }
+.posted { font-size: 12px; color: var(--text-muted); }
+
+.bookmark { display: grid; place-items: center; width: 20px; height: 20px; color: var(--text-primary); }
+.bookmark.is-saved { color: var(--brand); }
+.bookmark.is-saved svg { fill: var(--brand); }
+
+.empty { display: none; padding: 48px 0; text-align: center; color: var(--text-muted); }
+
+/* ---------- Company logo tiles ---------- */
+.logo-tile {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+}
+.logo-tile--layers { background: #efeaff; color: #6a4cf0; }
+.logo-tile--orbit { background: #e7f0ff; color: #2f6fdb; }
+.logo-tile--nova { background: var(--brand-tint); color: var(--brand); font-size: 26px; font-weight: 800; }
+.logo-tile svg { width: 26px; height: 26px; }
+
+/* =========================================================
+   Job details
+   ========================================================= */
+.topbar { display: flex; align-items: center; justify-content: space-between; height: 64px; margin-bottom: 8px; }
+.topbar h1 { font-size: 27px; font-weight: 800; letter-spacing: -0.8px; }
+.icon-btn { display: grid; place-items: center; width: 32px; height: 40px; }
+.topbar__actions { display: flex; align-items: center; gap: 16px; }
+
+.detail-layout { display: flex; flex-direction: column; gap: 24px; }
+.detail-main, .detail-aside { display: contents; }
+.summary { order: 1; }
+.desc { order: 2; }
+.company { order: 3; }
+.similar { order: 4; }
+
+.card { background: var(--card); border-radius: var(--radius-card); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.card__identity { display: flex; align-items: center; gap: 12px; }
+.card__meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.card__name { font-size: 15px; font-weight: 600; }
+.card__sub { font-size: 12px; color: var(--text-muted); }
+.card__title { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; }
+.card__role { display: flex; flex-direction: column; gap: 8px; }
+.card__salary { display: flex; align-items: center; justify-content: space-between; }
+.card__salary strong { font-size: 15px; font-weight: 600; }
+.card__salary span { font-size: 12px; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.fact { display: inline-flex; align-items: center; height: 32px; padding: 0 8px; border-radius: 24px; background: var(--input); font-size: 12px; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+
+.tabs { display: flex; justify-content: space-between; height: 40px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.tabs__tab { display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding-top: 2px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.tabs__tab::after { content: ''; display: block; width: 100%; height: 3px; border-radius: 2px; background: transparent; }
+.tabs__tab.is-active { color: var(--brand); }
+.tabs__tab.is-active::after { background: var(--brand); }
+
+.section { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; scroll-margin-top: 96px; }
+.section h2 { font-size: 16px; font-weight: 600; }
+.section p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+.section--overview { gap: 10px; }
+.bullets { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.bullets li { display: flex; gap: 10px; font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+.bullets li::before { content: ''; flex-shrink: 0; width: 4px; height: 4px; margin: 8.5px 1px 0; border-radius: 50%; background: var(--brand); }
+.benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.benefit { display: flex; align-items: center; gap: 8px; padding: 12px; border-radius: 14px; background: var(--input); font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+.benefit .ic { color: var(--brand); }
+
+.company p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+.company .card__name { font-size: 16px; }
+.company__link { font-size: 13px; font-weight: 600; color: var(--brand); }
+.similar h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+.similar__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.similar-card { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; background: var(--card); border-radius: var(--radius-card); transition: transform 0.18s ease; }
+.similar-card:hover { transform: translateY(-2px); }
+.similar-card__company { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+.similar-card__title { font-size: 13px; font-weight: 600; }
+.similar-card__loc { font-size: 12px; color: var(--text-muted); }
+.similar-card__salary { font-size: 12px; font-weight: 600; }
+
+/* Apply bar: pinned on phones, sticky side panel on desktop */
+.apply-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 16px 24px 24px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+}
+.apply-bar .btn { height: 58px; }
+
+@media (min-width: 900px) {
+  .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; align-items: start; }
+  .detail-main { display: flex; flex-direction: column; gap: 24px; }
+  .detail-aside { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 96px; }
+  .apply-bar { position: static; padding: 20px; border: 0; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+  .summary, .desc, .company, .similar { order: 0; }
+}
+@media (max-width: 899px) {
+  .page--detail { padding-bottom: 140px; }
+}
