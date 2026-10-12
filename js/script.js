@@ -79,23 +79,6 @@
     });
   });
 
-  /* Live search on the job listing */
-  var search = document.querySelector('[data-job-search]');
-  if (search) {
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.job-card'));
-    var empty = document.getElementById('no-results');
-    search.addEventListener('input', function () {
-      var q = search.value.trim().toLowerCase();
-      var visible = 0;
-      cards.forEach(function (card) {
-        var match = !q || card.textContent.toLowerCase().indexOf(q) !== -1;
-        card.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      if (empty) empty.style.display = visible ? 'none' : 'block';
-    });
-  }
-
   /* Whole job card is a link to the details screen */
   document.querySelectorAll('[data-href]').forEach(function (card) {
     function go() { window.location.href = card.getAttribute('data-href'); }

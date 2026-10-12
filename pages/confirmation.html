@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Application status · Hirevera</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body class="dashboard-page confirmation-page">
+	<div class="dashboard-shell">
+		<aside class="dashboard-sidebar" id="dashboard-navigation" data-dashboard-sidebar>
+			<a class="dashboard-brand" href="../index.html" aria-label="Hirevera home"><img src="../assets/hirevera-logo.svg" alt="Hirevera"></a>
+			<button class="dashboard-close" type="button" data-sidebar-toggle aria-label="Close navigation"><i data-lucide="x" class="ic ic-20"></i></button>
+			<div class="dashboard-sidebar__label">WORKSPACE</div>
+			<nav class="dashboard-nav" aria-label="Main navigation">
+				<a class="dashboard-nav__item" href="home.html" title="Home"><i data-lucide="house" class="ic ic-20"></i><span>Home</span></a>
+				<a class="dashboard-nav__item is-active" href="job-listing.html" title="Jobs"><i data-lucide="briefcase-business" class="ic ic-20"></i><span>Find jobs</span></a>
+				<a class="dashboard-nav__item" href="applications.html" title="Applications"><i data-lucide="file-text" class="ic ic-20"></i><span>Applications</span></a>
+				<a class="dashboard-nav__item" href="messages.html" title="Messages"><i data-lucide="message-circle" class="ic ic-20"></i><span>Messages</span></a>
+			</nav>
+			<div class="dashboard-sidebar__label dashboard-sidebar__label--account">ACCOUNT</div>
+			<nav class="dashboard-nav" aria-label="Account navigation"><a class="dashboard-nav__item" href="profile.html" title="Profile"><i data-lucide="user-round" class="ic ic-20"></i><span>My profile</span></a></nav>
+			<div class="dashboard-sidebar__foot"><span class="sidebar-mark">H</span><span class="sidebar-user"><strong data-name>Job seeker</strong><small>Candidate account</small></span></div>
+		</aside>
+		<button class="dashboard-backdrop" type="button" data-sidebar-close aria-label="Close navigation"></button>
+		<div class="dashboard-content">
+			<header class="dashboard-topbar">
+				<button class="icon-button sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" aria-controls="dashboard-navigation" aria-expanded="true"><i data-lucide="panel-left-close" class="ic ic-20"></i></button>
+				<div class="dashboard-topbar__title">Application status</div>
+				<div class="dashboard-topbar__actions"><a class="topbar-icon" href="messages.html" aria-label="Messages"><i data-lucide="message-circle" class="ic ic-20"></i></a><a class="avatar" href="profile.html" data-avatar aria-label="Your profile">H</a></div>
+			</header>
 
+			<main class="page dashboard-page__main confirmation-main">
+				<section class="confirmation-state confirmation-state--success" data-success-state hidden aria-labelledby="confirmation-title">
+					<div class="confirmation-intro">
+						<div class="confirmation-check"><i data-lucide="check" class="ic ic-30"></i></div>
+						<span class="eyebrow">APPLICATION RECEIVED</span>
+						<h1 id="confirmation-title">Application sent</h1>
+						<p>Your application details have been saved in this browser.</p>
+					</div>
+					<div class="confirmation-layout">
+						<section class="confirmation-card confirmation-receipt" aria-label="Application receipt">
+							<div class="application-role-card__identity"><span class="logo-tile" data-confirm-logo></span><div><strong data-confirm-company></strong><small data-confirm-location></small></div></div>
+							<div class="confirmation-detail"><span>Role</span><strong data-confirm-role></strong></div>
+							<div class="confirmation-detail"><span>Submitted</span><strong data-confirm-time></strong></div>
+							<div class="confirmation-detail"><span>Reference</span><strong data-confirm-reference></strong></div>
+							  <p class="confirmation-resume"><i data-lucide="file-check-2" class="ic ic-18"></i><span>Resume selected: <strong data-confirm-resume></strong></span></p>
+						</section>
+						<section class="confirmation-next">
+							<h2>What happens next</h2>
+							<ol class="timeline">
+								<li class="is-complete"><span class="timeline__marker"><i data-lucide="check" class="ic ic-14"></i></span><div><strong>Application saved</strong><p>Your details and resume filename are saved in this browser.</p></div></li>
+								<li class="is-current"><span class="timeline__marker"><i data-lucide="circle-dot" class="ic ic-14"></i></span><div><strong>Ready for review</strong><p>This demo does not send applications to employers.</p></div></li>
+								<li><span class="timeline__marker"></span><div><strong>Employer response</strong><p>A connected hiring service would share updates here.</p></div></li>
+							</ol>
+						</section>
+					</div>
+					<div class="confirmation-actions"><a class="btn btn--lg" href="applications.html">View my applications</a><a class="confirmation-secondary" href="job-listing.html">Back to jobs</a></div>
+				</section>
+
+				<section class="confirmation-state confirmation-state--error" data-error-state hidden aria-labelledby="confirmation-error-title">
+					<div class="confirmation-error-icon"><i data-lucide="triangle-alert" class="ic ic-28"></i></div>
+					<span class="eyebrow">NOT SUBMITTED</span>
+					<h1 id="confirmation-error-title">We couldn't find that application</h1>
+					<p>Your application may not have been completed in this browser. Return to the form to check your details and try again.</p>
+					<div class="confirmation-error-actions"><a class="btn btn--lg" data-retry-link href="job-listing.html">Return to application</a><a class="confirmation-secondary" href="job-listing.html">Browse jobs instead</a></div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+	<script src="../js/session.js"></script>
+	<script src="../js/job_data.js"></script>
+	<script src="../js/script.js"></script>
+	<script src="../js/dashboard.js"></script>
+	<script src="../js/confirmation.js"></script>
+</body>
+</html>

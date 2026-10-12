@@ -10,21 +10,27 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/pages.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
-      <nav class="nav" aria-label="Main">
-        <a class="nav__item" href="home.html"><i data-lucide="house" class="ic ic-20"></i>Home</a>
-        <a class="nav__item" href="job-listing.html"><i data-lucide="briefcase-business" class="ic ic-20"></i>Jobs</a>
-        <a class="nav__item" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i>Applications</a>
-        <a class="nav__item" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i>Messages</a>
-        <a class="nav__item is-active" aria-current="page" href="profile.html"><i data-lucide="user-round" class="ic ic-20"></i>Profile</a>
+<body class="dashboard-page">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboard-navigation" data-dashboard-sidebar>
+      <a class="dashboard-brand" href="../index.html" aria-label="Hirevera home"><img src="../assets/hirevera-logo.svg" alt="Hirevera"></a>
+      <button class="dashboard-close" type="button" data-sidebar-toggle aria-label="Close navigation"><i data-lucide="x" class="ic ic-20"></i></button>
+      <div class="dashboard-sidebar__label">WORKSPACE</div>
+      <nav class="dashboard-nav" aria-label="Main navigation">
+        <a class="dashboard-nav__item" href="home.html" title="Home"><i data-lucide="house" class="ic ic-20"></i><span>Home</span></a>
+        <a class="dashboard-nav__item" href="job-listing.html" title="Jobs"><i data-lucide="briefcase-business" class="ic ic-20"></i><span>Find jobs</span></a>
+        <a class="dashboard-nav__item" href="applications.html" title="Applications"><i data-lucide="file-text" class="ic ic-20"></i><span>Applications</span></a>
+        <a class="dashboard-nav__item" href="messages.html" title="Messages"><i data-lucide="message-circle" class="ic ic-20"></i><span>Messages</span></a>
       </nav>
-    </div>
-  </header>
+      <div class="dashboard-sidebar__label dashboard-sidebar__label--account">ACCOUNT</div>
+      <nav class="dashboard-nav" aria-label="Account navigation"><a class="dashboard-nav__item is-active" href="profile.html" aria-current="page" title="Profile"><i data-lucide="user-round" class="ic ic-20"></i><span>My profile</span></a></nav>
+      <div class="dashboard-sidebar__foot"><span class="sidebar-mark">H</span><span class="sidebar-user"><strong data-name>Job seeker</strong><small>Candidate account</small></span></div>
+    </aside>
+    <button class="dashboard-backdrop" type="button" data-sidebar-close aria-label="Close navigation"></button>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar"><button class="icon-button sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" aria-controls="dashboard-navigation" aria-expanded="true"><i data-lucide="panel-left-close" class="ic ic-20"></i></button><div class="dashboard-topbar__title">My profile</div><div class="dashboard-topbar__actions"><a class="topbar-icon" href="messages.html" aria-label="Messages"><i data-lucide="message-circle" class="ic ic-20"></i></a><a class="avatar" href="profile.html" data-avatar aria-label="Your profile">H</a></div></header>
 
-  <main class="page">
+  <main class="page dashboard-page__main">
     <section class="profile">
       <a class="avatar" href="#" data-avatar aria-label="Your photo">H</a>
       <h1 data-name>there</h1>
@@ -37,10 +43,13 @@
       <a class="row" href="../index.html"><i data-lucide="log-out" class="ic ic-20"></i><div class="row__main"><span class="row__title">Log out</span></div><i data-lucide="chevron-right" class="ic ic-18"></i></a>
     </div>
   </main>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../js/session.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/dashboard.js"></script>
   <script src="../js/pages.js"></script>
 </body>
 </html>

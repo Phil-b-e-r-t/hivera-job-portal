@@ -10,23 +10,35 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/pages.css">
 </head>
-<body class="page-wide">
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
-      <nav class="nav" aria-label="Main">
-        <a class="nav__item" href="home.html"><i data-lucide="house" class="ic ic-20"></i>Home</a>
-        <a class="nav__item is-active" href="job-listing.html" aria-current="page"><i data-lucide="briefcase-business" class="ic ic-20"></i>Jobs</a>
-        <a class="nav__item" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i>Applications</a>
-        <a class="nav__item" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i>Messages</a>
-        <a class="nav__item" href="profile.html"><i data-lucide="user-round" class="ic ic-20"></i>Profile</a>
+<body class="dashboard-page">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboard-navigation" data-dashboard-sidebar>
+      <a class="dashboard-brand" href="../index.html" aria-label="Hirevera home"><img src="../assets/hirevera-logo.svg" alt="Hirevera"></a>
+      <button class="dashboard-close" type="button" data-sidebar-toggle aria-label="Close navigation"><i data-lucide="x" class="ic ic-20"></i></button>
+      <div class="dashboard-sidebar__label">WORKSPACE</div>
+      <nav class="dashboard-nav" aria-label="Main navigation">
+        <a class="dashboard-nav__item" href="home.html" title="Home"><i data-lucide="house" class="ic ic-20"></i><span>Home</span></a>
+        <a class="dashboard-nav__item is-active" href="job-listing.html" aria-current="page" title="Jobs"><i data-lucide="briefcase-business" class="ic ic-20"></i><span>Find jobs</span></a>
+        <a class="dashboard-nav__item" href="applications.html" title="Applications"><i data-lucide="file-text" class="ic ic-20"></i><span>Applications</span></a>
+        <a class="dashboard-nav__item" href="messages.html" title="Messages"><i data-lucide="message-circle" class="ic ic-20"></i><span>Messages</span></a>
       </nav>
-    </div>
-  </header>
+      <div class="dashboard-sidebar__label dashboard-sidebar__label--account">ACCOUNT</div>
+      <nav class="dashboard-nav" aria-label="Account navigation">
+        <a class="dashboard-nav__item" href="profile.html" title="Profile"><i data-lucide="user-round" class="ic ic-20"></i><span>My profile</span></a>
+      </nav>
+      <div class="dashboard-sidebar__foot"><span class="sidebar-mark">H</span><span class="sidebar-user"><strong data-name>Job seeker</strong><small>Candidate account</small></span></div>
+    </aside>
+    <button class="dashboard-backdrop" type="button" data-sidebar-close aria-label="Close navigation"></button>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <button class="icon-button sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" aria-controls="dashboard-navigation" aria-expanded="true"><i data-lucide="panel-left-close" class="ic ic-20"></i></button>
+        <div class="dashboard-topbar__title">Find a job</div>
+        <div class="dashboard-topbar__actions"><a class="topbar-icon" href="messages.html" aria-label="Messages"><i data-lucide="message-circle" class="ic ic-20"></i></a><a class="avatar" href="profile.html" data-avatar aria-label="Your profile">H</a></div>
+      </header>
 
-  <main class="page">
+  <main class="page dashboard-page__main">
     <div class="listing-layout">
-      <aside class="sidebar" data-sidebar aria-label="Job filters">
+      <aside class="job-filters" id="job-filters" data-sidebar aria-label="Job filters">
         <div class="side-card">
           <div class="side-card__head">
             <h2>Filters</h2>
@@ -43,6 +55,7 @@
             <legend>Work mode</legend>
             <label class="side-option"><input type="checkbox" data-group="mode" value="Remote"> Remote</label>
             <label class="side-option"><input type="checkbox" data-group="mode" value="Hybrid"> Hybrid</label>
+            <label class="side-option"><input type="checkbox" data-group="mode" value="On-site"> On-site</label>
           </fieldset>
         </div>
 
@@ -59,7 +72,7 @@
             <h1 data-greeting>Good Evening</h1>
             <p>Your job desk is right here.</p>
           </div>
-          <a class="avatar" href="#" data-avatar aria-label="Your profile">H</a>
+          <a class="avatar greeting-avatar" href="profile.html" data-avatar aria-label="Your profile">H</a>
         </section>
 
         <div class="search-row">
@@ -67,99 +80,28 @@
             <i data-lucide="search" class="ic ic-20"></i>
             <input type="search" placeholder="Search jobs or companies" aria-label="Search jobs or companies" data-job-search>
           </label>
-          <button class="filter-btn" type="button" aria-label="Filters"><i data-lucide="sliders-horizontal" class="ic ic-22"></i></button>
-        </div>
-
-        <div class="chips" role="group" aria-label="Filter jobs">
-          <button class="chip is-active" type="button">Remote</button>
-          <button class="chip" type="button">Internship</button>
-          <button class="chip" type="button">Salary <i data-lucide="chevron-down" class="ic ic-14"></i></button>
-          <button class="chip" type="button">Full-time</button>
+          <button class="filter-btn" type="button" data-filter-toggle aria-expanded="false" aria-controls="job-filters"><i data-lucide="sliders-horizontal" class="ic ic-22"></i><span>Filters</span></button>
         </div>
 
         <div class="results-head">
-          <h2>Recommended for you</h2>
+          <h2>Open roles</h2>
           <span data-job-count>3 jobs</span>
         </div>
 
-        <div class="job-grid">
-          <article class="job-card" data-href="job-details.html?id=1" tabindex="0">
-            <div class="job-card__identity">
-              <div class="logo-tile logo-tile--layers"><i data-lucide="layers"></i></div>
-              <div class="job-card__role">
-                <h3 class="job-card__title">Product Designer</h3>
-                <p class="job-card__company">Layers</p>
-              </div>
-              <button class="bookmark" type="button" aria-label="Save Product Designer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-            </div>
-            <div class="job-card__row">
-              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>New York · Remote</span>
-              <span class="tag">Full-time</span>
-            </div>
-            <div class="job-card__row">
-              <span class="salary">$90k–$120k <span class="muted">/ year</span></span>
-              <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
-            </div>
-            <div class="job-card__row">
-              <span class="posted">2 hours ago</span>
-              <a class="btn btn--sm" href="application-form.html?id=1">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-            </div>
-          </article>
-
-          <article class="job-card" data-href="job-details.html?id=2" tabindex="0">
-            <div class="job-card__identity">
-              <div class="logo-tile logo-tile--orbit"><i data-lucide="leaf"></i></div>
-              <div class="job-card__role">
-                <h3 class="job-card__title">Frontend Developer</h3>
-                <p class="job-card__company">Orbit</p>
-              </div>
-              <button class="bookmark" type="button" aria-label="Save Frontend Developer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-            </div>
-            <div class="job-card__row">
-              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>San Francisco · Remote</span>
-              <span class="tag">Full-time</span>
-            </div>
-            <div class="job-card__row">
-              <span class="salary">$110k–$145k <span class="muted">/ year</span></span>
-              <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
-            </div>
-            <div class="job-card__row">
-              <span class="posted">5 hours ago</span>
-              <a class="btn btn--sm" href="application-form.html?id=2">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-            </div>
-          </article>
-
-          <article class="job-card" data-href="job-details.html?id=3" tabindex="0">
-            <div class="job-card__identity">
-              <div class="logo-tile logo-tile--nova">N</div>
-              <div class="job-card__role">
-                <h3 class="job-card__title">Marketing Intern</h3>
-                <p class="job-card__company">Nova</p>
-              </div>
-              <button class="bookmark" type="button" aria-label="Save Marketing Intern" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-            </div>
-            <div class="job-card__row">
-              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>Austin · Hybrid</span>
-              <span class="tag">Internship</span>
-            </div>
-            <div class="job-card__row">
-              <span class="salary">$25–$30 <span class="muted">/ hr</span></span>
-            </div>
-            <div class="job-card__row">
-              <span class="posted">1 day ago</span>
-              <a class="btn btn--sm" href="application-form.html?id=3">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-            </div>
-          </article>
-        </div>
+        <div class="job-grid" id="job-grid" aria-live="polite"></div>
 
         <p class="empty" id="no-results">No jobs match your search. Try a different title or company.</p>
       </div>
     </div>
   </main>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../js/session.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/job_data.js"></script>
   <script src="../js/listing.js"></script>
 </body>
 </html>

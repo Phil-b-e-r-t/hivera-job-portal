@@ -415,13 +415,6 @@ h1, h2, h3, p { margin: 0; }
   color: #7a3b00;
 }
 /* Add the avatar photo exported from Figma at assets/avatar.png */
-.avatar::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('../assets/avatar.png') center / cover no-repeat;
-}
-
 .search-row { display: flex; gap: 12px; margin-top: 16px; max-width: 720px; }
 .search-row .field { flex: 1; }
 .filter-btn {
@@ -502,6 +495,9 @@ h1, h2, h3, p { margin: 0; }
 .logo-tile--layers { background: #efeaff; color: #6a4cf0; }
 .logo-tile--orbit { background: #e7f0ff; color: #2f6fdb; }
 .logo-tile--nova { background: var(--brand-tint); color: var(--brand); font-size: 26px; font-weight: 800; }
+.logo-tile--northstar { background: #e6f3ef; color: #236b5a; font-size: 20px; font-weight: 700; }
+.logo-tile--fieldnote { background: #fbecdd; color: #a65726; font-size: 20px; font-weight: 700; }
+.logo-tile--thread { background: #e8edf7; color: #52688a; font-size: 20px; font-weight: 700; }
 .logo-tile svg { width: 26px; height: 26px; }
 
 /* =========================================================
