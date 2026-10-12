@@ -26,3 +26,28 @@ a.row:hover { transform: translateY(-2px); }
 .profile h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.6px; }
 .profile p { color: var(--text-secondary); }
 .empty-note { display: none; padding: 40px 0; text-align: center; color: var(--text-muted); grid-column: 1 / -1; }
+
+/* =========================================================
+   Job listing sidebar (desktop only; phones use the tab bar)
+   ========================================================= */
+.listing-layout { display: block; }
+.sidebar { display: none; }
+.is-filtered-out { display: none !important; }
+
+@media (min-width: 900px) {
+  .listing-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
+}
+
+.side-card { display: flex; flex-direction: column; gap: 18px; padding: 20px; background: var(--card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.side-card__head { display: flex; align-items: center; justify-content: space-between; }
+.side-card h2 { font-size: 16px; font-weight: 600; }
+.side-clear { font-size: 12px; font-weight: 600; color: var(--brand); }
+.side-group { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; border: 0; }
+.side-group legend { padding: 0; margin-bottom: 10px; font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+.side-option { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary); cursor: pointer; }
+.side-option input { width: 16px; height: 16px; margin: 0; accent-color: var(--brand); cursor: pointer; }
+.side-card--promo { gap: 8px; background: var(--brand-tint); box-shadow: none; }
+.side-card--promo h2 { color: var(--brand-ink); }
+.side-card--promo p { font-size: 12px; line-height: 1.5; color: var(--text-secondary); }
+.side-promo__btn { width: 100%; margin-top: 8px; }
