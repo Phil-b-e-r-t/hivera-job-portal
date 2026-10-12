@@ -28,6 +28,20 @@ a.row:hover { transform: translateY(-2px); }
 .empty-note { display: none; padding: 40px 0; text-align: center; color: var(--text-muted); grid-column: 1 / -1; }
 
 /* =========================================================
+   Wide layout (body.page-wide): the header and page content
+   stretch across the screen instead of a 1120px centred column.
+   ========================================================= */
+@media (min-width: 768px) {
+  .page-wide .site-header__inner,
+  .page-wide .page {
+    width: 100%;
+    max-width: none;
+    padding-left: clamp(24px, 4vw, 72px);
+    padding-right: clamp(24px, 4vw, 72px);
+  }
+}
+
+/* =========================================================
    Job listing sidebar (desktop only; phones use the tab bar)
    ========================================================= */
 .listing-layout { display: block; }
@@ -35,19 +49,11 @@ a.row:hover { transform: translateY(-2px); }
 .is-filtered-out { display: none !important; }
 
 @media (min-width: 900px) {
-  .listing-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .listing-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 32px; align-items: start; }
   .sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
 }
 
-/* Wide layout: the job listing (and its header) fill ~92% of the screen
-   instead of the default 1120px centred column. */
-@media (min-width: 768px) {
-  .page:has(.listing-layout),
-  body:has(.listing-layout) .site-header__inner {
-    width: 92%;
-    max-width: 1680px;
-  }
-}
+.page-wide .job-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
 
 .side-card { display: flex; flex-direction: column; gap: 18px; padding: 20px; background: var(--card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
 .side-card__head { display: flex; align-items: center; justify-content: space-between; }
