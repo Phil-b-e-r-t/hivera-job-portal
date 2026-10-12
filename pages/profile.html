@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile · Hirevera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
+      <nav class="nav" aria-label="Main">
+        <a class="nav__item" href="home.html"><i data-lucide="house" class="ic ic-20"></i>Home</a>
+        <a class="nav__item" href="job-listing.html"><i data-lucide="briefcase-business" class="ic ic-20"></i>Jobs</a>
+        <a class="nav__item" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i>Applications</a>
+        <a class="nav__item" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i>Messages</a>
+        <a class="nav__item is-active" aria-current="page" href="profile.html"><i data-lucide="user-round" class="ic ic-20"></i>Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="profile">
+      <a class="avatar" href="#" data-avatar aria-label="Your photo">H</a>
+      <h1 data-name>there</h1>
+      <p>Job seeker · Hirevera member</p>
+    </section>
+    <div class="list">
+      <a class="row" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i><div class="row__main"><span class="row__title">My applications</span></div><i data-lucide="chevron-right" class="ic ic-18"></i></a>
+      <a class="row" href="job-listing.html"><i data-lucide="bookmark" class="ic ic-20"></i><div class="row__main"><span class="row__title">Saved jobs</span></div><i data-lucide="chevron-right" class="ic ic-18"></i></a>
+      <a class="row" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i><div class="row__main"><span class="row__title">Messages</span></div><i data-lucide="chevron-right" class="ic ic-18"></i></a>
+      <a class="row" href="../index.html"><i data-lucide="log-out" class="ic ic-20"></i><div class="row__main"><span class="row__title">Log out</span></div><i data-lucide="chevron-right" class="ic ic-18"></i></a>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+</html>

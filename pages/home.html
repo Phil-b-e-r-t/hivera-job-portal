@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · Hirevera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
+      <nav class="nav" aria-label="Main">
+        <a class="nav__item is-active" aria-current="page" href="home.html"><i data-lucide="house" class="ic ic-20"></i>Home</a>
+        <a class="nav__item" href="job-listing.html"><i data-lucide="briefcase-business" class="ic ic-20"></i>Jobs</a>
+        <a class="nav__item" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i>Applications</a>
+        <a class="nav__item" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i>Messages</a>
+        <a class="nav__item" href="profile.html"><i data-lucide="user-round" class="ic ic-20"></i>Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="greeting">
+      <div><h1 data-greeting>Good Afternoon</h1><p>Here is your job search at a glance.</p></div>
+      <a class="avatar" href="profile.html" data-avatar aria-label="Your profile">H</a>
+    </section>
+    <div class="stats">
+      <a class="stat" href="applications.html"><strong>3</strong><span>Applications sent</span></a>
+      <a class="stat" href="applications.html"><strong>1</strong><span>Interview scheduled</span></a>
+      <a class="stat" href="job-listing.html"><strong>3</strong><span>New jobs for you</span></a>
+      <a class="stat" href="messages.html"><strong>2</strong><span>Unread messages</span></a>
+    </div>
+    <div class="results-head"><h2>Recommended for you</h2><a class="link-brand" href="job-listing.html">See all</a></div>
+    <div class="list">
+      <a class="row" href="job-details.html?id=1"><div class="logo-tile logo-tile--layers"><i data-lucide="layers"></i></div><div class="row__main"><span class="row__title">Product Designer</span><span class="row__sub">Layers · New York · Remote</span></div><span class="row__time">$90k–$120k</span></a>
+      <a class="row" href="job-details.html?id=2"><div class="logo-tile logo-tile--orbit"><i data-lucide="leaf"></i></div><div class="row__main"><span class="row__title">Frontend Developer</span><span class="row__sub">Orbit · San Francisco · Remote</span></div><span class="row__time">$110k–$145k</span></a>
+      <a class="row" href="job-details.html?id=3"><div class="logo-tile logo-tile--nova">N</div><div class="row__main"><span class="row__title">Marketing Intern</span><span class="row__sub">Nova · Austin · Hybrid</span></div><span class="row__time">$25–$30 / hr</span></a>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+</html>

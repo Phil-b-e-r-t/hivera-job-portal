@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Applications · Hirevera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
+      <nav class="nav" aria-label="Main">
+        <a class="nav__item" href="home.html"><i data-lucide="house" class="ic ic-20"></i>Home</a>
+        <a class="nav__item" href="job-listing.html"><i data-lucide="briefcase-business" class="ic ic-20"></i>Jobs</a>
+        <a class="nav__item is-active" aria-current="page" href="applications.html"><i data-lucide="file-text" class="ic ic-20"></i>Applications</a>
+        <a class="nav__item" href="messages.html"><i data-lucide="message-circle" class="ic ic-20"></i>Messages</a>
+        <a class="nav__item" href="profile.html"><i data-lucide="user-round" class="ic ic-20"></i>Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="greeting"><div><h1>Applications</h1><p>Track every job you have applied for.</p></div></section>
+    <div class="pills" role="group" aria-label="Filter applications">
+      <button class="pill is-active" type="button" data-filter="all">All</button>
+      <button class="pill" type="button" data-filter="review">In review</button>
+      <button class="pill" type="button" data-filter="interview">Interview</button>
+      <button class="pill" type="button" data-filter="sent">Sent</button>
+    </div>
+    <div class="list">
+      <div class="row" data-status="interview">
+        <div class="logo-tile logo-tile--orbit"><i data-lucide="leaf"></i></div>
+        <div class="row__main"><span class="row__title">Frontend Developer</span><span class="row__sub">Orbit · Applied 2 days ago</span></div>
+        <span class="status status--interview">Interview</span>
+      </div>
+      <div class="row" data-status="review">
+        <div class="logo-tile logo-tile--layers"><i data-lucide="layers"></i></div>
+        <div class="row__main"><span class="row__title">Product Designer</span><span class="row__sub">Layers · Applied 4 days ago</span></div>
+        <span class="status status--review">In review</span>
+      </div>
+      <div class="row" data-status="sent">
+        <div class="logo-tile logo-tile--nova">N</div>
+        <div class="row__main"><span class="row__title">Marketing Intern</span><span class="row__sub">Nova · Applied today</span></div>
+        <span class="status status--sent">Sent</span>
+      </div>
+      <p class="empty-note" id="filter-empty">No applications in this group yet.</p>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+</html>

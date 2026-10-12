@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Job Details · Hirevera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <main class="page page--detail">
+    <header class="topbar">
+      <a class="icon-btn" href="job-listing.html" aria-label="Back to jobs"><i data-lucide="arrow-left" class="ic ic-22"></i></a>
+      <h1>Details</h1>
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" data-share aria-label="Share this job"><i data-lucide="share-2" class="ic ic-20"></i></button>
+        <button class="bookmark" type="button" aria-label="Save this job" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
+      </div>
+    </header>
 
+    <div class="detail-layout">
+      <div class="detail-main">
+        <section class="summary">
+          <div class="card">
+            <div class="card__identity">
+              <div class="logo-tile" id="d-logo"></div>
+              <div class="card__meta">
+                <span class="card__name" id="d-company">Orbit</span>
+                <span class="card__sub" id="d-posted">Posted 5 hours ago</span>
+              </div>
+              <span class="badge badge--md" id="d-new-badge" hidden>New</span>
+            </div>
+            <div class="card__role">
+              <h2 class="card__title" id="d-title">Frontend Developer</h2>
+              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i><span id="d-location"></span></span>
+            </div>
+            <div class="card__salary">
+              <div class="salary"><strong id="d-salary"></strong> <span class="muted" id="d-per"></span></div>
+              <span class="badge badge--md" id="d-easy-badge" hidden>Easy Apply</span>
+            </div>
+          </div>
+          <div class="facts" id="d-facts"></div>
+        </section>
+
+        <section class="desc">
+          <div class="tabs">
+            <button class="tabs__tab is-active" type="button" data-target="sec-description">Description</button>
+            <button class="tabs__tab" type="button" data-target="sec-requirements">Requirements</button>
+            <button class="tabs__tab" type="button" data-target="sec-company">Company</button>
+          </div>
+
+          <div class="section section--overview" id="sec-description">
+            <h2>About the role</h2>
+            <p id="d-about"></p>
+          </div>
+
+          <div class="section" id="sec-responsibilities">
+            <h2>Responsibilities</h2>
+            <ul class="bullets" id="d-responsibilities"></ul>
+          </div>
+
+          <div class="section" id="sec-requirements">
+            <h2>Requirements</h2>
+            <ul class="bullets" id="d-requirements"></ul>
+          </div>
+
+          <div class="section">
+            <h2>Benefits</h2>
+            <div class="benefits">
+              <span class="benefit"><i data-lucide="heart-pulse" class="ic ic-18"></i>Health insurance</span>
+              <span class="benefit"><i data-lucide="house" class="ic ic-18"></i>Remote work</span>
+              <span class="benefit"><i data-lucide="graduation-cap" class="ic ic-18"></i>Learning budget</span>
+              <span class="benefit"><i data-lucide="calendar-days" class="ic ic-18"></i>Paid leave</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="detail-aside">
+        <section class="card company" id="sec-company">
+          <div class="card__identity">
+            <div class="logo-tile" id="d-logo-2"></div>
+            <div class="card__meta">
+              <span class="card__name" id="d-company-name"></span>
+              <span class="card__sub" id="d-company-sub"></span>
+            </div>
+          </div>
+          <p id="d-company-about"></p>
+          <a class="company__link" href="#">View company</a>
+        </section>
+
+        <section class="similar">
+          <h2>Similar jobs</h2>
+          <div class="similar__grid" id="d-similar"></div>
+        </section>
+
+        <div class="apply-bar">
+          <a class="btn btn--lg" id="d-apply" href="application-form.html">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../js/jobs-data.js"></script>
+  <script src="../js/job-details.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
