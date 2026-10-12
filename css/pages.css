@@ -39,6 +39,16 @@ a.row:hover { transform: translateY(-2px); }
   .sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
 }
 
+/* Wide layout: the job listing (and its header) fill ~92% of the screen
+   instead of the default 1120px centred column. */
+@media (min-width: 768px) {
+  .page:has(.listing-layout),
+  body:has(.listing-layout) .site-header__inner {
+    width: 92%;
+    max-width: 1680px;
+  }
+}
+
 .side-card { display: flex; flex-direction: column; gap: 18px; padding: 20px; background: var(--card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
 .side-card__head { display: flex; align-items: center; justify-content: space-between; }
 .side-card h2 { font-size: 16px; font-weight: 600; }
