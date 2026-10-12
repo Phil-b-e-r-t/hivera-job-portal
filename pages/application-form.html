@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Apply · Hirevera</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body class="dashboard-page application-page">
+	<div class="dashboard-shell">
+		<aside class="dashboard-sidebar" id="dashboard-navigation" data-dashboard-sidebar>
+			<a class="dashboard-brand" href="../index.html" aria-label="Hirevera home"><img src="../assets/hirevera-logo.svg" alt="Hirevera"></a>
+			<button class="dashboard-close" type="button" data-sidebar-toggle aria-label="Close navigation"><i data-lucide="x" class="ic ic-20"></i></button>
+			<div class="dashboard-sidebar__label">WORKSPACE</div>
+			<nav class="dashboard-nav" aria-label="Main navigation">
+				<a class="dashboard-nav__item" href="home.html" title="Home"><i data-lucide="house" class="ic ic-20"></i><span>Home</span></a>
+				<a class="dashboard-nav__item is-active" href="job-listing.html" title="Jobs"><i data-lucide="briefcase-business" class="ic ic-20"></i><span>Find jobs</span></a>
+				<a class="dashboard-nav__item" href="applications.html" title="Applications"><i data-lucide="file-text" class="ic ic-20"></i><span>Applications</span></a>
+				<a class="dashboard-nav__item" href="messages.html" title="Messages"><i data-lucide="message-circle" class="ic ic-20"></i><span>Messages</span></a>
+			</nav>
+			<div class="dashboard-sidebar__label dashboard-sidebar__label--account">ACCOUNT</div>
+			<nav class="dashboard-nav" aria-label="Account navigation"><a class="dashboard-nav__item" href="profile.html" title="Profile"><i data-lucide="user-round" class="ic ic-20"></i><span>My profile</span></a></nav>
+			<div class="dashboard-sidebar__foot"><span class="sidebar-mark">H</span><span class="sidebar-user"><strong data-name>Job seeker</strong><small>Candidate account</small></span></div>
+		</aside>
+		<button class="dashboard-backdrop" type="button" data-sidebar-close aria-label="Close navigation"></button>
+		<div class="dashboard-content">
+			<header class="dashboard-topbar">
+				<button class="icon-button sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" aria-controls="dashboard-navigation" aria-expanded="true"><i data-lucide="panel-left-close" class="ic ic-20"></i></button>
+				<div class="dashboard-topbar__title">Application</div>
+				<div class="dashboard-topbar__actions"><a class="topbar-icon" href="messages.html" aria-label="Messages"><i data-lucide="message-circle" class="ic ic-20"></i></a><a class="avatar" href="profile.html" data-avatar aria-label="Your profile">H</a></div>
+			</header>
 
+			<main class="page dashboard-page__main application-main">
+				<a class="application-back" data-job-link href="job-listing.html"><i data-lucide="arrow-left" class="ic ic-16"></i> Back to job details</a>
+				<div class="application-heading">
+					<div><p class="eyebrow">YOUR NEXT STEP</p><h1>General Application</h1><p class="application-intro">Share your details and resume with the hiring team.</p></div>
+					  <span class="application-status"><i data-lucide="database" class="ic ic-16"></i> Demo application</span>
+				</div>
+
+				<ol class="application-progress" aria-label="Application progress">
+					<li class="is-current" aria-current="step"><span>1</span><div><strong>Contact</strong><small>Your details</small></div></li>
+					<li><span>2</span><div><strong>Resume</strong><small>Attach a file</small></div></li>
+					<li><span>3</span><div><strong>Submit</strong><small>Review and send</small></div></li>
+				</ol>
+
+				<div class="application-layout">
+					<form class="application-form" id="application-form" novalidate>
+						<input type="hidden" name="jobId" id="application-job-id">
+						<div class="application-error" id="application-error" role="alert" tabindex="-1" hidden></div>
+
+						<section class="application-panel">
+							<div class="application-panel__heading"><div><span class="step-kicker">01 / CONTACT</span><h2>Contact details</h2></div><span>Required fields marked *</span></div>
+							<div class="application-fields">
+								<div class="application-field">
+									<label for="applicant-name">Full name <span>*</span></label>
+									<input id="applicant-name" name="fullName" type="text" autocomplete="name" placeholder="Enter your full name" minlength="2" maxlength="100" required aria-describedby="name-error">
+									<small class="application-field__error" id="name-error" hidden>Please enter your full name.</small>
+								</div>
+								<div class="application-field">
+									<label for="applicant-email">Email address <span>*</span></label>
+									<input id="applicant-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="150" required aria-describedby="email-error">
+									<small class="application-field__error" id="email-error" hidden>Enter a valid email address.</small>
+								</div>
+								<div class="application-field">
+									<label for="applicant-phone">Phone number <small>Optional</small></label>
+									<input id="applicant-phone" name="phone" type="tel" autocomplete="tel" placeholder="Include your country code" maxlength="32">
+								</div>
+								<div class="application-field">
+									<label for="applicant-portfolio">Portfolio or LinkedIn <small>Optional</small></label>
+									  <input id="applicant-portfolio" name="portfolio" type="url" placeholder="https://" maxlength="300" aria-describedby="portfolio-error">
+									  <small class="application-field__error" id="portfolio-error" hidden>Enter a complete link starting with https://.</small>
+								</div>
+							</div>
+						</section>
+
+						<section class="application-panel">
+							<div class="application-panel__heading"><div><span class="step-kicker">02 / RESUME</span><h2>Your resume</h2></div><span>PDF, DOC or DOCX · Up to 5 MB</span></div>
+							<div class="resume-upload" id="resume-dropzone">
+								<input id="resume-file" name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required aria-describedby="resume-error">
+								<span class="resume-upload__icon"><i data-lucide="file-up" class="ic ic-22"></i></span>
+								<span class="resume-upload__copy"><strong data-resume-name>Select your resume</strong><small data-resume-meta>Choose a file from your device</small></span>
+								<span class="resume-upload__action">Browse files</span>
+							</div>
+							<small class="application-field__error" id="resume-error" hidden>Attach a PDF, DOC or DOCX file under 5 MB.</small>
+						</section>
+
+						<section class="application-panel application-panel--letter">
+							<div class="application-panel__heading"><div><span class="step-kicker">03 / NOTE</span><h2>Message to the hiring team</h2></div><span>Optional</span></div>
+							<div class="application-field">
+								<label for="cover-letter">Cover note</label>
+								<textarea id="cover-letter" name="coverLetter" rows="5" maxlength="1500" placeholder="Share a little about why this role interests you."></textarea>
+								<small class="character-count"><span data-character-count>0</span> / 1500</small>
+							</div>
+						</section>
+
+						<label class="application-consent"><input type="checkbox" id="application-consent" required aria-describedby="consent-error"><span>I agree to share my contact details and resume with <strong data-company-name>the hiring team</strong>.</span></label>
+						<small class="application-field__error consent-error" id="consent-error" hidden>Please confirm before submitting.</small>
+						<div class="application-submit"><span>Demo only: details and resume name are saved in this browser; no employer is contacted.</span><button class="btn btn--lg" type="submit">Submit application <i data-lucide="arrow-right" class="ic ic-18"></i></button></div>
+					</form>
+
+					<aside class="application-aside" aria-label="Job summary">
+						<section class="application-role-card">
+							<div class="application-role-card__identity"><span class="logo-tile" id="application-logo"></span><div><strong data-company>Orbit</strong><small data-location>San Francisco · Remote</small></div></div>
+							<h2 data-role-title>General Application</h2>
+							<div class="application-role-card__footer"><span data-salary>Salary negotiable</span><span class="role-tag">General application</span></div>
+						</section>
+						<section class="application-aside__note"><h2>Before you submit</h2><ul><li><i data-lucide="check" class="ic ic-16"></i>Use an email you check regularly.</li><li><i data-lucide="check" class="ic ic-16"></i>Make sure your resume is up to date.</li><li><i data-lucide="check" class="ic ic-16"></i>You can track your application from your dashboard.</li></ul></section>
+					</aside>
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+	<script src="../js/session.js"></script>
+	<script src="../js/job_data.js"></script>
+	<script src="../js/script.js"></script>
+	<script src="../js/dashboard.js"></script>
+	<script src="../js/application.js"></script>
+</body>
+</html>
