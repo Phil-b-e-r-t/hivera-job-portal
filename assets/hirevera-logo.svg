@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" role="img" aria-labelledby="title description">
+  <title id="title">Hirevera</title>
+  <desc id="description">Connect, hire, grow</desc>
+  <circle cx="52" cy="18" r="10" fill="#f6a400"/>
+  <path d="M20 26c0-5 4-7 8-4l19 14c3 2 5 6 5 10v39c0 5-4 7-8 4L25 77c-3-2-5-6-5-10V26Z" fill="#173b78"/>
+  <path d="m53 40 19-16c4-3 8-1 8 4v39c0 4-2 7-5 9L59 88c-4 3-8 1-8-4V52c0-5-2-9-5-12l-2-2 9 2Z" fill="#f28a00"/>
+  <path d="M35 49h30v15H35z" fill="#fff"/>
+  <text x="112" y="76" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#173b78">Hire<tspan fill="#f28a00">vera</tspan></text>
+  <text x="116" y="112" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="500" letter-spacing="5.5" fill="#173b78">CONNECT  ·  HIRE  ·  GROW</text>
+</svg>

@@ -131,34 +131,69 @@ h1, h2, h3, p { margin: 0; }
    ========================================================= */
 .auth-page {
   min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 40px 24px 56px;
+  gap: 34px;
+  padding: 34px 20px 56px;
+  background: #f4f7fc;
+}
+.auth-page::before,
+.auth-page::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  background: #e8f0fc;
+  pointer-events: none;
+}
+.auth-page::before {
+  width: 560px;
+  aspect-ratio: 1;
+  top: -360px;
+  right: -310px;
+}
+.auth-page::after {
+  width: 720px;
+  aspect-ratio: 1;
+  bottom: -485px;
+  left: -385px;
+}
+.auth-brand {
+  position: relative;
+  z-index: 1;
+  width: min(260px, 78vw);
+  line-height: 0;
+}
+.auth-brand .logo {
+  display: block;
+  width: 100%;
+}
+.logo__image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .auth-card {
   position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 460px;
-  border-radius: var(--radius-card);
-  border: 1px solid rgba(16, 24, 32, 0.08);
+  max-width: 456px;
+  border-radius: 12px;
+  border: 0;
   overflow: hidden;
-  background: var(--card);
-  box-shadow: 0 0 0 1px rgba(255, 120, 0, 0.2),
-    0 0 0 6px rgba(255, 120, 0, 0.06),
-    0 18px 56px rgba(16, 24, 32, 0.12);
+  background: #fff;
+  box-shadow: 0 20px 58px rgba(34, 73, 126, 0.13);
 }
 
 /* Portrait sits behind the card. Drop the photo exported from Figma at
    assets/portrait.jpg and it appears automatically; until then the warm
    gradient below is shown. */
 .portrait {
-  position: absolute;
-  inset: 0;
-  background:
-    url('../assets/portrait.jpg') center / cover no-repeat,
-    linear-gradient(160deg, #ffe9d6 0%, #f6d9c4 55%, #efc9b0 100%);
+  display: none;
 }
 .auth-card--signup .portrait { opacity: 0.65; }
 .portrait__backdrop {
@@ -188,25 +223,54 @@ h1, h2, h3, p { margin: 0; }
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin: 14px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.97);
-  border: 1px solid rgba(16, 24, 32, 0.08);
-  border-radius: 20px;
-  box-shadow: 0 8px 28px rgba(16, 24, 32, 0.1);
+  gap: 22px;
+  margin: 0;
+  padding: 34px 36px 26px;
+  background: #fff;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: none;
 }
-@media (min-width: 600px) { .auth-card__body { padding: 32px; } }
+@media (min-width: 600px) { .auth-card__body { padding: 34px 36px 26px; } }
 
 .welcome { display: flex; flex-direction: column; gap: 8px; }
-.welcome h1 { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; }
-.welcome p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
-.auth-card--signup .welcome h1 { font-size: 31px; line-height: 1.16; letter-spacing: -1.1px; }
+.welcome h1 { font-size: 30px; font-weight: 700; line-height: 1.2; color: #17365f; }
+.welcome p { font-size: 13px; line-height: 1.55; color: #607a9f; }
+.auth-card--signup .welcome h1 { font-size: 30px; line-height: 1.2; letter-spacing: 0; }
 
-.credentials { display: flex; flex-direction: column; gap: 16px; }
+.credentials { display: flex; flex-direction: column; gap: 14px; }
+.auth-page .field {
+  height: 48px;
+  padding: 0 14px;
+  color: #617b9e;
+  background: #f8fafd;
+  border-color: #d4e1f2;
+  border-radius: 10px;
+}
+.auth-page .field input { color: #17365f; }
+.auth-page .field input::placeholder { color: #91a6c3; }
+.auth-page .field:focus-within {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(255, 120, 0, 0.12);
+}
+.auth-page .field-group.is-invalid .field,
+.auth-page .field-group.is-invalid .field:focus-within {
+  border-color: #c62828;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+}
+.auth-page .btn--auth {
+  height: 52px;
+  border-radius: 12px;
+  background: var(--brand);
+  box-shadow: var(--shadow-btn);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.auth-page .btn--auth:hover { background: var(--brand-ink); }
 
 .login-options { display: flex; align-items: center; justify-content: space-between; }
-.check { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.check { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; color: #304d75; cursor: pointer; }
 .check input {
   appearance: none;
   -webkit-appearance: none;
@@ -214,14 +278,14 @@ h1, h2, h3, p { margin: 0; }
   height: 20px;
   margin: 0;
   border-radius: 6px;
-  background: var(--input);
-  border: 1.5px solid #dfe3e7;
+  background: #f8fafd;
+  border: 1.5px solid #cbd9eb;
   display: grid;
   place-items: center;
   cursor: pointer;
 }
 .check input:checked {
-  background: rgba(138, 149, 163, 0.7);
+  background: var(--brand);
   border-color: transparent;
 }
 .check input:checked::after {
@@ -235,30 +299,36 @@ h1, h2, h3, p { margin: 0; }
 .link-brand { color: var(--brand); font-weight: 500; font-size: 12px; }
 .link-brand--semibold { font-weight: 600; }
 
-.divider { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-muted); }
-.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--input); }
+.divider { display: flex; align-items: center; gap: 16px; font-size: 12px; color: #6880a1; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #dce6f3; }
 .social { display: flex; flex-direction: column; gap: 16px; }
 .providers { display: flex; gap: 16px; }
 .social-btn {
   flex: 1;
-  height: 54px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   background: var(--card);
-  border: 1.5px solid var(--input);
-  border-radius: var(--radius-field);
+  border: 1px solid #d4e1f2;
+  border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
   transition: background 0.15s ease;
 }
-.social-btn:hover { background: var(--input); }
+.social-btn:hover { background: #f4f8fe; }
 .social-btn svg { width: 20px; height: 20px; }
 
-.auth-foot { text-align: center; font-size: 12px; line-height: 1.5; color: var(--text-secondary); }
+.auth-foot { text-align: center; font-size: 12px; line-height: 1.5; color: #607a9f; }
 .auth-foot a { color: var(--brand); font-weight: 600; }
 .auth-foot .gap { display: block; height: 18px; }
+
+@media (max-width: 520px) {
+  .auth-page { gap: 26px; padding: 28px 18px 40px; }
+  .auth-card__body { padding: 28px 24px 24px; }
+  .providers { gap: 10px; }
+}
 
 /* =========================================================
    Site header + navigation
