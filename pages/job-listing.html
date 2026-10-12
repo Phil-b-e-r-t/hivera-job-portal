@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/pages.css">
 </head>
-<body>
+<body class="page-wide">
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="../index.html" aria-label="Hirevera home" style="width:150px"><img class="logo__image" src="../assets/hirevera-logo.svg" alt="Hirevera - Connect, Hire, Grow"></a>
@@ -25,109 +25,141 @@
   </header>
 
   <main class="page">
-    <section class="greeting">
-      <div>
-        <h1 data-greeting>Good Evening</h1>
-        <p>Your job desk is right here.</p>
+    <div class="listing-layout">
+      <aside class="sidebar" data-sidebar aria-label="Job filters">
+        <div class="side-card">
+          <div class="side-card__head">
+            <h2>Filters</h2>
+            <button class="side-clear" type="button" data-clear-filters>Clear all</button>
+          </div>
+
+          <fieldset class="side-group">
+            <legend>Job type</legend>
+            <label class="side-option"><input type="checkbox" data-group="type" value="Full-time"> Full-time</label>
+            <label class="side-option"><input type="checkbox" data-group="type" value="Internship"> Internship</label>
+          </fieldset>
+
+          <fieldset class="side-group">
+            <legend>Work mode</legend>
+            <label class="side-option"><input type="checkbox" data-group="mode" value="Remote"> Remote</label>
+            <label class="side-option"><input type="checkbox" data-group="mode" value="Hybrid"> Hybrid</label>
+          </fieldset>
+        </div>
+
+        <div class="side-card side-card--promo">
+          <h2>Stand out to employers</h2>
+          <p>Complete your profile to get better job matches.</p>
+          <a class="btn btn--sm side-promo__btn" href="profile.html">Update profile</a>
+        </div>
+      </aside>
+
+      <div class="listing-main">
+        <section class="greeting">
+          <div>
+            <h1 data-greeting>Good Evening</h1>
+            <p>Your job desk is right here.</p>
+          </div>
+          <a class="avatar" href="#" data-avatar aria-label="Your profile">H</a>
+        </section>
+
+        <div class="search-row">
+          <label class="field">
+            <i data-lucide="search" class="ic ic-20"></i>
+            <input type="search" placeholder="Search jobs or companies" aria-label="Search jobs or companies" data-job-search>
+          </label>
+          <button class="filter-btn" type="button" aria-label="Filters"><i data-lucide="sliders-horizontal" class="ic ic-22"></i></button>
+        </div>
+
+        <div class="chips" role="group" aria-label="Filter jobs">
+          <button class="chip is-active" type="button">Remote</button>
+          <button class="chip" type="button">Internship</button>
+          <button class="chip" type="button">Salary <i data-lucide="chevron-down" class="ic ic-14"></i></button>
+          <button class="chip" type="button">Full-time</button>
+        </div>
+
+        <div class="results-head">
+          <h2>Recommended for you</h2>
+          <span data-job-count>3 jobs</span>
+        </div>
+
+        <div class="job-grid">
+          <article class="job-card" data-href="job-details.html?id=1" tabindex="0">
+            <div class="job-card__identity">
+              <div class="logo-tile logo-tile--layers"><i data-lucide="layers"></i></div>
+              <div class="job-card__role">
+                <h3 class="job-card__title">Product Designer</h3>
+                <p class="job-card__company">Layers</p>
+              </div>
+              <button class="bookmark" type="button" aria-label="Save Product Designer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
+            </div>
+            <div class="job-card__row">
+              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>New York · Remote</span>
+              <span class="tag">Full-time</span>
+            </div>
+            <div class="job-card__row">
+              <span class="salary">$90k–$120k <span class="muted">/ year</span></span>
+              <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
+            </div>
+            <div class="job-card__row">
+              <span class="posted">2 hours ago</span>
+              <a class="btn btn--sm" href="application-form.html?id=1">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
+            </div>
+          </article>
+
+          <article class="job-card" data-href="job-details.html?id=2" tabindex="0">
+            <div class="job-card__identity">
+              <div class="logo-tile logo-tile--orbit"><i data-lucide="leaf"></i></div>
+              <div class="job-card__role">
+                <h3 class="job-card__title">Frontend Developer</h3>
+                <p class="job-card__company">Orbit</p>
+              </div>
+              <button class="bookmark" type="button" aria-label="Save Frontend Developer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
+            </div>
+            <div class="job-card__row">
+              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>San Francisco · Remote</span>
+              <span class="tag">Full-time</span>
+            </div>
+            <div class="job-card__row">
+              <span class="salary">$110k–$145k <span class="muted">/ year</span></span>
+              <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
+            </div>
+            <div class="job-card__row">
+              <span class="posted">5 hours ago</span>
+              <a class="btn btn--sm" href="application-form.html?id=2">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
+            </div>
+          </article>
+
+          <article class="job-card" data-href="job-details.html?id=3" tabindex="0">
+            <div class="job-card__identity">
+              <div class="logo-tile logo-tile--nova">N</div>
+              <div class="job-card__role">
+                <h3 class="job-card__title">Marketing Intern</h3>
+                <p class="job-card__company">Nova</p>
+              </div>
+              <button class="bookmark" type="button" aria-label="Save Marketing Intern" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
+            </div>
+            <div class="job-card__row">
+              <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>Austin · Hybrid</span>
+              <span class="tag">Internship</span>
+            </div>
+            <div class="job-card__row">
+              <span class="salary">$25–$30 <span class="muted">/ hr</span></span>
+            </div>
+            <div class="job-card__row">
+              <span class="posted">1 day ago</span>
+              <a class="btn btn--sm" href="application-form.html?id=3">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
+            </div>
+          </article>
+        </div>
+
+        <p class="empty" id="no-results">No jobs match your search. Try a different title or company.</p>
       </div>
-      <a class="avatar" href="#" data-avatar aria-label="Your profile">H</a>
-    </section>
-
-    <div class="search-row">
-      <label class="field">
-        <i data-lucide="search" class="ic ic-20"></i>
-        <input type="search" placeholder="Search jobs or companies" aria-label="Search jobs or companies" data-job-search>
-      </label>
-      <button class="filter-btn" type="button" aria-label="Filters"><i data-lucide="sliders-horizontal" class="ic ic-22"></i></button>
     </div>
-
-    <div class="chips" role="group" aria-label="Filter jobs">
-      <button class="chip is-active" type="button">Remote</button>
-      <button class="chip" type="button">Internship</button>
-      <button class="chip" type="button">Salary <i data-lucide="chevron-down" class="ic ic-14"></i></button>
-      <button class="chip" type="button">Full-time</button>
-    </div>
-
-    <div class="results-head">
-      <h2>Recommended for you</h2>
-      <span>3 jobs</span>
-    </div>
-
-    <div class="job-grid">
-      <article class="job-card" data-href="job-details.html?id=1" tabindex="0">
-        <div class="job-card__identity">
-          <div class="logo-tile logo-tile--layers"><i data-lucide="layers"></i></div>
-          <div class="job-card__role">
-            <h3 class="job-card__title">Product Designer</h3>
-            <p class="job-card__company">Layers</p>
-          </div>
-          <button class="bookmark" type="button" aria-label="Save Product Designer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-        </div>
-        <div class="job-card__row">
-          <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>New York · Remote</span>
-          <span class="tag">Full-time</span>
-        </div>
-        <div class="job-card__row">
-          <span class="salary">$90k–$120k <span class="muted">/ year</span></span>
-          <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
-        </div>
-        <div class="job-card__row">
-          <span class="posted">2 hours ago</span>
-          <a class="btn btn--sm" href="application-form.html?id=1">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-        </div>
-      </article>
-
-      <article class="job-card" data-href="job-details.html?id=2" tabindex="0">
-        <div class="job-card__identity">
-          <div class="logo-tile logo-tile--orbit"><i data-lucide="leaf"></i></div>
-          <div class="job-card__role">
-            <h3 class="job-card__title">Frontend Developer</h3>
-            <p class="job-card__company">Orbit</p>
-          </div>
-          <button class="bookmark" type="button" aria-label="Save Frontend Developer" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-        </div>
-        <div class="job-card__row">
-          <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>San Francisco · Remote</span>
-          <span class="tag">Full-time</span>
-        </div>
-        <div class="job-card__row">
-          <span class="salary">$110k–$145k <span class="muted">/ year</span></span>
-          <span class="badges"><span class="badge">New</span><span class="badge">Easy Apply</span></span>
-        </div>
-        <div class="job-card__row">
-          <span class="posted">5 hours ago</span>
-          <a class="btn btn--sm" href="application-form.html?id=2">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-        </div>
-      </article>
-
-      <article class="job-card" data-href="job-details.html?id=3" tabindex="0">
-        <div class="job-card__identity">
-          <div class="logo-tile logo-tile--nova">N</div>
-          <div class="job-card__role">
-            <h3 class="job-card__title">Marketing Intern</h3>
-            <p class="job-card__company">Nova</p>
-          </div>
-          <button class="bookmark" type="button" aria-label="Save Marketing Intern" aria-pressed="false"><i data-lucide="bookmark" class="ic ic-20"></i></button>
-        </div>
-        <div class="job-card__row">
-          <span class="location"><i data-lucide="map-pin" class="ic ic-14"></i>Austin · Hybrid</span>
-          <span class="tag">Internship</span>
-        </div>
-        <div class="job-card__row">
-          <span class="salary">$25–$30 <span class="muted">/ hr</span></span>
-        </div>
-        <div class="job-card__row">
-          <span class="posted">1 day ago</span>
-          <a class="btn btn--sm" href="application-form.html?id=3">Apply now <i data-lucide="arrow-right" class="ic ic-14"></i></a>
-        </div>
-      </article>
-    </div>
-
-    <p class="empty" id="no-results">No jobs match your search. Try a different title or company.</p>
   </main>
 
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../js/session.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/listing.js"></script>
 </body>
 </html>
